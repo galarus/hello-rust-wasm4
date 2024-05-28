@@ -1,0 +1,1 @@
+/data/data/com.termux/files/home/wasm4/hello-rust/target/wasm32-unknown-unknown/release/cart.wasm: /data/data/com.termux/files/home/wasm4/hello-rust/src/alloc.rs /data/data/com.termux/files/home/wasm4/hello-rust/src/lib.rs /data/data/com.termux/files/home/wasm4/hello-rust/src/wasm4.rs
