@@ -1,7 +1,10 @@
 #[cfg(feature = "buddy-alloc")]
 mod alloc;
-use std::sync::{Arc, Mutex};
+use std::sync::Mutex;
+use lazy_static::lazy_static;
+mod game;
 mod wasm4;
+use game::Game;
 use wasm4::*;
 
 #[rustfmt::skip]
@@ -16,51 +19,28 @@ const SMILEY: [u8; 8] = [
     0b11000011,
 ];
 
+lazy_static! {
+        static ref MY_GAME: Mutex<Game> = Mutex::new(Game::new());
+}
+
+//static selectSwitch: AtomicBool = AtomicBool::new(false);
+
 pub static username: Mutex<String> = Mutex::new(String::new());   
 
 #[no_mangle]
 fn update() {
     unsafe { *DRAW_COLORS = 2 }
-    text("what is your name?", 10, 10);
-    text("A", 15, 25);
-    text("B", 30, 25);
-    text("C", 45, 25);
-    text("D", 60, 25);
-    text("E", 75, 25);
-    text("F", 90, 25);
-    text("G", 105, 25);
-    text("H", 120, 25);
-    text("I", 135, 25);
-
-    text("J", 15, 40);
-    text("K", 30, 40);
-    text("L", 45, 40);
-    text("M", 60, 40);
-    text("N", 75, 40);
-    text("O", 90, 40);
-    text("P", 105, 40);
-    text("Q", 120, 40);
-    text("R", 135, 40);
-
-    text("S", 15, 55);
-    text("T", 30, 55);
-    text("U", 45, 55);
-    text("V", 60, 55);
-    text("W", 75, 55);
-    text("X", 90, 55);
-    text("Y", 105, 55);
-    text("Z", 120, 55);
-    text("\\x84", 135, 55);
+    MY_GAME.lock().expect("game_state").update();
     let gamepad = unsafe { *GAMEPAD1 };
-    if gamepad & BUTTON_1 != 0 {
+/*    if gamepad & BUTTON_1 != 0 {
         unsafe { *DRAW_COLORS = 4 }
-        *username.lock().unwrap() = String::from("ABCDEF");
+        let prevName = &*username.lock().unwrap().clone();
+        let newName = format!("{}{}", prevName, "A");
+        *username.lock().unwrap() = String::from(newName);
+        *selectSwitch.get_mut() = true;
+    } else {
+        *selectSwitch.get_mut() = false;
     }
+*/
 
-    blit(&SMILEY, 76, 76, 8, 8, BLIT_1BPP);
-    text("Press X to blink", 16, 90);
-    text(">: ", 16, 105);
-    text(
-&*username.lock().unwrap().clone()
-        , 30, 105);
 }
