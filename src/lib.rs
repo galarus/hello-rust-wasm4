@@ -4,6 +4,8 @@ use lazy_static::lazy_static;
 use std::sync::Mutex;
 mod game;
 mod wasm4;
+mod select_box;
+
 use game::Game;
 use wasm4::*;
 
