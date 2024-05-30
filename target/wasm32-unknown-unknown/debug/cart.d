@@ -1,0 +1,1 @@
+C:\Users\Dusty\proj\wasm\hello-rust-wasm4\target\wasm32-unknown-unknown\debug\cart.wasm: C:\Users\Dusty\proj\wasm\hello-rust-wasm4\src\alloc.rs C:\Users\Dusty\proj\wasm\hello-rust-wasm4\src\game.rs C:\Users\Dusty\proj\wasm\hello-rust-wasm4\src\lib.rs C:\Users\Dusty\proj\wasm\hello-rust-wasm4\src\wasm4.rs
