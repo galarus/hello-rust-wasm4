@@ -1,0 +1,8 @@
+/data/data/com.termux/files/home/wasm4/hello-rust/target/wasm32-unknown-unknown/debug/deps/libbuddy_alloc-55183f0ae0951352.rmeta: /data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/lib.rs /data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/buddy_alloc.rs /data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/fast_alloc.rs /data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/non_threadsafe_alloc.rs
+
+/data/data/com.termux/files/home/wasm4/hello-rust/target/wasm32-unknown-unknown/debug/deps/buddy_alloc-55183f0ae0951352.d: /data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/lib.rs /data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/buddy_alloc.rs /data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/fast_alloc.rs /data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/non_threadsafe_alloc.rs
+
+/data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/lib.rs:
+/data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/buddy_alloc.rs:
+/data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/fast_alloc.rs:
+/data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-6f17d22bba15001f/buddy-alloc-0.4.2/src/non_threadsafe_alloc.rs:

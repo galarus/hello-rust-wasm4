@@ -2,14 +2,14 @@ use crate::wasm4;
 use wasm4::*;
 
 const select_box: [u8; 8] = [
-    0b00000000,
-    0b01111110,
-    0b01111110,
-    0b01111110,
-    0b01111110,
-    0b01111110,
-    0b01111110,
-    0b00000000,
+    0b11111111,
+    0b11111111,
+    0b11111111,
+    0b11111111,
+    0b11111111,
+    0b11111111,
+    0b00000001,
+    0b00000001,
 ];
 
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -39,14 +39,34 @@ impl Game {
         if just_pressed & wasm4::BUTTON_1 != 0 {
             self.username.push_str("A");
         }
+        
+        if just_pressed & wasm4::BUTTON_2 != 0 {
+            self.username.pop();
+        }
 
         if just_pressed & wasm4::BUTTON_LEFT != 0 {
+            self.select_point.x -= 1;
+            if self.select_point.x < 0 {
+                self.select_point.x = 8;
+            } 
         }
         if just_pressed & wasm4::BUTTON_RIGHT != 0 {
+            self.select_point.x += 1;
+            if self.select_point.x > 8 {
+                self.select_point.x = 0;
+            }
         }
         if just_pressed & wasm4::BUTTON_UP != 0 {
+            self.select_point.y -= 1;
+            if self.select_point.y < 0 {
+                self.select_point.y = 2;
+            }
         }
         if just_pressed & wasm4::BUTTON_DOWN != 0 {
+            self.select_point.y += 1;
+            if self.select_point.y > 2 {
+                self.select_point.y = 0;
+            }
         }
 
         self.prev_gamepad = gamepad;
@@ -57,15 +77,26 @@ impl Game {
 
         blit(&select_box,
              15 * (self.select_point.x+1),
-             25 + 15 * self.select_point.y,
+             27 + 15 * self.select_point.y,
              8, 8, BLIT_1BPP);
 
-
+        for yi in 0..3 {
+            for xi in 0..9 {
+                let ascii_offset = yi * 9 + xi; 
+                let ascii_num = 65 + ascii_offset;
+                let utf_seq = [ascii_num];
+                let ascii_char = std::str::from_utf8(&utf_seq).expect("utf sequence");
+                let x_loc: i32 = (15 + xi*15).into();
+                let y_loc: i32 = (25 + yi*15).into();
+                text(&ascii_char, x_loc, y_loc);
+            }
+        }
         text("what is your name?", 10, 10);
-        text("A", 15, 25);
-        text("B", 30, 25);
-        text("C", 45, 25);
-        text("D", 60, 25);
+       // text("A", 15, 25);
+      //  text("B", 30, 25);
+       // text("C", 45, 25);
+      /*
+       * text("D", 60, 25);
         text("E", 75, 25);
         text("F", 90, 25);
         text("G", 105, 25);
@@ -91,6 +122,7 @@ impl Game {
         text("Y", 105, 55);
         text("Z", 120, 55);
         text(b"\x84", 135, 55);
+        */
 
         text("Press X to blink", 16, 90);
         text(">: ", 16, 105);
